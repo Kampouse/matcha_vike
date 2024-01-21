@@ -1,10 +1,4 @@
-import {
-  beforeAll,
-  describe,
-  expect,
-  afterAll,
-  test,
-} from "vitest";
+import { beforeAll, describe, expect, afterAll, test } from "vitest";
 import { startTestServer } from "../h3-entry";
 import { toNodeListener } from "h3";
 import { createServer } from "node:http";
@@ -17,7 +11,10 @@ beforeAll(async () => {
 //dummie test
 describe("valid login", () => {
   test("should be able to set a cookie", async () => {
-    const input = { email: "jpmartel98@gmail.com", password: process.env.PASSWORD };
+    const input = {
+      email: "jpmartel98@gmail.com",
+      password: process.env.PASSWORD,
+    };
     const data = await fetch("http://localhost:3000/api/session/login", {
       method: "POST",
       body: JSON.stringify(input),
@@ -26,15 +23,16 @@ describe("valid login", () => {
     const body = await data.json();
 
     expect(body).toEqual({
-      payload: { success: true, data: { email: "jpmartel98@gmail.com", username: "Leatha93" } },
-
+      payload: {
+        success: true,
+        data: { email: "jpmartel98@gmail.com", username: "Leatha93" },
+      },
 
       //expect(body).toEqual({ hello: "session" });
     });
   });
 });
 describe("valid register", () => {
-
   const pass = faker.internet.password();
   const register = {
     email: faker.internet.email(),
@@ -50,7 +48,10 @@ describe("valid register", () => {
     });
     const body = await data.json();
     expect(body).toEqual({
-      payload: { success: true, data: { email: register.email, username: register.username } },
+      payload: {
+        success: true,
+        data: { email: register.email, username: register.username },
+      },
       //expect(body).toEqual({ hello: "session" });
     });
   });
@@ -66,18 +67,7 @@ describe("valid register", () => {
       payload: { success: true, data: [] },
       //expect(body).toEqual({ hello: "session" });
     });
-  }
-  );
+  });
 });
 
-
-afterAll(async () => {
-
-
-
-
-
-
-
-
-});
+afterAll(async () => {});

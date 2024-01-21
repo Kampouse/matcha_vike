@@ -2,7 +2,11 @@
 export default onBeforePrerenderStart;
 
 import { filterMovieData } from "../filterMovieData";
-import { filterMoviesData, getStarWarsMovies, getTitle } from "./getStarWarsMovies.js";
+import {
+  filterMoviesData,
+  getStarWarsMovies,
+  getTitle,
+} from "./getStarWarsMovies.js";
 
 async function onBeforePrerenderStart() {
   const movies = await getStarWarsMovies();

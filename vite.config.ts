@@ -4,9 +4,13 @@ import solid from "vike-solid/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  plugins: [solid({
-    vps: {
-      prerender: true,
-    },
-  }), trpc(), vercel()],
+  plugins: [
+    solid({
+      vps: {
+        prerender: true,
+      },
+    }),
+    trpc(),
+    vercel(),
+  ],
 });

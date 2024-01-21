@@ -6,7 +6,7 @@ export const routes: RouteDefinition[] = [
     path: "/",
     component: lazy(() => import("./pages/home")),
     load: AboutData,
-    children: []
+    children: [],
   },
   {
     path: "/about",

@@ -14,7 +14,6 @@ export const readZodBody = async <T extends z.ZodType>(
       return { success: false, data: { error: "invalid request" } };
     }
     if (typeof body === "string") {
-
       parsed = jsonparser.parse(body);
       const validated = schema.safeParse(parsed);
 
@@ -34,7 +33,8 @@ export const readZodBody = async <T extends z.ZodType>(
   } catch (error) {
     return { success: false, data: error };
   }
-  const error = z.object({ error: z.string() }).safeParse({ error: "invalid request" });
+  const error = z
+    .object({ error: z.string() })
+    .safeParse({ error: "invalid request" });
   return { success: false, data: error };
-
 };

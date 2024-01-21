@@ -21,14 +21,13 @@ import {
   toNodeListener,
   useBase,
 } from "h3";
-import Sessions from "./routers/sessions"
+import Sessions from "./routers/sessions";
 import serveStatic from "serve-static";
 import { renderPage } from "vike/server";
-import {database} from "./modules/database"
-import "dotenv/config"
+import { database } from "./modules/database";
+import "dotenv/config";
 export async function startTestServer() {
   {
-    
     installWhatwgNodeFetch();
     installGetSetCookie();
     installCrypto();
@@ -52,20 +51,16 @@ export async function startTestServer() {
         }),
       ),
     );
-    app.use(useBase("/api/session", Sessions.handler))
-    app.use(router)
+    app.use(useBase("/api/session", Sessions.handler));
+    app.use(router);
     return app;
-
   }
 }
 
-
-
-
 async function startDevServer(root: string, isProduction: boolean) {
-installWhatwgNodeFetch();
-installGetSetCookie();
-installCrypto();
+  installWhatwgNodeFetch();
+  installGetSetCookie();
+  installCrypto();
 
   const app = createApp();
 
@@ -86,9 +81,6 @@ installCrypto();
   }
 
   const router = createRouter();
-
-
-
 
   router.use(
     "/api/trpc/**:path",
@@ -114,9 +106,6 @@ installCrypto();
    * @link {@see https://vike.dev}
    **/
 
-
-
-
   router.use(
     "/**",
     eventHandler(async (event) => {
@@ -132,8 +121,8 @@ installCrypto();
       return response?.getBody();
     }),
   );
-  app.use(useBase("/api/session", Sessions.handler))
-  app.use(router)
+  app.use(useBase("/api/session", Sessions.handler));
+  app.use(router);
 
   const server = createServer(toNodeListener(app)).listen(
     process.env.PORT || 3000,
@@ -146,11 +135,11 @@ installCrypto();
   });
 }
 
-export default function entry_point(__filename: string, __dirname: string, isProduction: boolean) {
+export default function entry_point(
+  __filename: string,
+  __dirname: string,
+  isProduction: boolean,
+) {
   const root = __dirname;
   return startDevServer(root, isProduction);
-
-};
-
-
-
+}

@@ -23,7 +23,6 @@ export const Fetch = async (param: string, init?: RequestInit) => {
     const response = await fetch(`http://localhost:5454/api${param}`, {
       headers: {
         "Content-Type": "application/json",
-
       },
       ...init,
     });

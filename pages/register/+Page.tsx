@@ -1,6 +1,4 @@
-import { Headless } from "../components/Layout";
-import { registerFormSchema } from "../utils/schemas";
-import { Fetch } from "../utils/trpc";
+import { registerFormSchema } from "../../zods/schemas";
 import { Show, createSignal } from "solid-js";
 import z from "zod";
 import { faker } from "@faker-js/faker";
@@ -18,7 +16,10 @@ export default function Register() {
 
   type registerFormSchema = ReturnType<typeof Validation>;
   const registerFN = async (validatedContent: registerFormSchema) => {
-    const data = await Fetch("/session/register", {
+    if (validatedContent === null) {
+      return null;
+    }
+    const data = await fetch("/session/register", {
       method: "POST",
       body: JSON.stringify({
         email: validatedContent.email,
@@ -72,61 +73,59 @@ export default function Register() {
   const pass = "hello!itsMeMAYa" + "!123";
 
   return (
-    <Headless>
-      <div
-        class=" flex flex-col items-center justify-center 
+    <div
+      class=" flex flex-col items-center justify-center 
        border border-1 border-gray-900 rounded-lg  my-[100px] p-[2em]"
-      >
-        <Show when={issue() === false}>
-          <h1> your request as been denied</h1>
-        </Show>
-        <Show when={issue() === true}>
-          <h1> your request as succesfull</h1>
-        </Show>
-        <h1> Register to platform hugging</h1>
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <div
-            class={
-              "flex flex-col items-center justify-center    w-96 h-[25rem] border-1  "
-            }
-          >
-            <div class="flex flex-col items-center justify-center    w-96 h-[25rem] border-1  ">
-              <input
-                name="email"
-                type="text"
-                placeholder="email"
-                value={mockFn("email")}
-                class="bg-transparent border border-1 border-gray-900 text-center text-slate-50"
-              />
-              <input
-                name="username"
-                type="text"
-                placeholder="username"
-                value={mockFn("username")}
-                class="bg-transparent border border-1 border-gray-900 text-center text-slate-50"
-              />
-              <input
-                name="password"
-                type="password"
-                placeholder="password"
-                value={pass}
-                class="bg-transparent border border-1 border-gray-900 text-slate-50 text-center"
-              />
-              <input
-                name="re_password"
-                type="password"
-                placeholder="retype password"
-                value={pass}
-                class="bg-transparent border border-1 border-gray-900 text-slate-50 text-center"
-              />
-              <button class="mt-6" type="submit">
-                {" "}
-                submit{" "}
-              </button>
-            </div>
+    >
+      <Show when={issue() === false}>
+        <h1> your request as been denied</h1>
+      </Show>
+      <Show when={issue() === true}>
+        <h1> your request as succesfull</h1>
+      </Show>
+      <h1> Register to platform hugging</h1>
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <div
+          class={
+            "flex flex-col items-center justify-center    w-96 h-[25rem] border-1  "
+          }
+        >
+          <div class="flex flex-col items-center justify-center    w-96 h-[25rem] border-1  ">
+            <input
+              name="email"
+              type="text"
+              placeholder="email"
+              value={mockFn("email")}
+              class="bg-transparent border border-1 border-gray-900 text-center text-slate-50"
+            />
+            <input
+              name="username"
+              type="text"
+              placeholder="username"
+              value={mockFn("username")}
+              class="bg-transparent border border-1 border-gray-900 text-center text-slate-50"
+            />
+            <input
+              name="password"
+              type="password"
+              placeholder="password"
+              value={pass}
+              class="bg-transparent border border-1 border-gray-900 text-slate-50 text-center"
+            />
+            <input
+              name="re_password"
+              type="password"
+              placeholder="retype password"
+              value={pass}
+              class="bg-transparent border border-1 border-gray-900 text-slate-50 text-center"
+            />
+            <button class="mt-6" type="submit">
+              {" "}
+              submit{" "}
+            </button>
           </div>
-        </form>
-      </div>
-    </Headless>
+        </div>
+      </form>
+    </div>
   );
 }

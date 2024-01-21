@@ -8,10 +8,7 @@ import { Link } from "../components/Link";
 export default function LayoutDefault(props: { children?: JSX.Element }) {
   return (
     <div class="flex">
-      
-      
       <Content>{props.children}</Content>
-
     </div>
   );
 }
@@ -21,7 +18,6 @@ function Sidebar(props: { children: JSX.Element }) {
     <div
       id="sidebar"
       class=" flex flex-col shrink-0 border-r-2 border-gray-200 bg-gray-100 "
-
     >
       {props.children}
     </div>
@@ -30,10 +26,8 @@ function Sidebar(props: { children: JSX.Element }) {
 
 function Content(props: { children: JSX.Element }) {
   return (
-    <div >
-      <div class='w-1' >
-        {props.children}
-      </div>
+    <div>
+      <div class="w-1">{props.children}</div>
     </div>
   );
 }

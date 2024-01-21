@@ -1,8 +1,4 @@
-import { Headless } from "../components/Layout";
-import { loginFormSchema } from "../utils/schemas";
-import { trpc, Fetch } from "../utils/trpc";
-import { useLocation } from "@solidjs/router";
-import { useNavigate } from "@solidjs/router";
+import { loginFormSchema } from "../../zods/schemas";
 import type z from "zod";
 export default function Login() {
   type loginFormSchema = z.infer<typeof loginFormSchema> | z.ZodIssue[];
@@ -12,7 +8,6 @@ export default function Login() {
   };
   //onClientSubmit(validatedContent) ? onServerSubmit(validatedContent) : console.log("fall back to error state here") }
 
-  const navigate = useNavigate();
   const handleSubmit = (e: Event) => {
     const form = e.target as HTMLFormElement;
     e.preventDefault();
@@ -24,7 +19,7 @@ export default function Login() {
       console.log("error state");
       return null;
     }
-    Fetch("/session/login", {
+    fetch("/session/login", {
       method: "POST",
       body: JSON.stringify({
         email: validatedContent.email,
@@ -37,7 +32,7 @@ export default function Login() {
       },
     }).then((res) => {
       if (res.status === 200) {
-        navigate("/dashboard");
+        // navigate("/dashboard");
         return null;
       }
       console.log("error");
@@ -53,7 +48,7 @@ export default function Login() {
   };
 
   return (
-    <Headless>
+    <div>
       <div
         class=" flex flex-col items-center justify-center 
        border border-1 border-gray-900 rounded-lg  my-[100px] p-[2em]"
@@ -89,6 +84,6 @@ export default function Login() {
           </div>
         </form>
       </div>
-    </Headless>
+    </div>
   );
 }

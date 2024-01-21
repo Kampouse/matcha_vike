@@ -9,9 +9,8 @@ import { Route, Routes } from "@solidjs/router";
 import { For } from "solid-js";
 import Home from "./pages/home";
 import type { IAppRouter } from "@repo/trpc";
-import { routes } from "./routes"
+import { routes } from "./routes";
 const serverConfig = { port: 3000, prefix: "/api/trpc" };
-
 
 import {
   createTRPCProxyClient,
@@ -20,7 +19,6 @@ import {
   splitLink,
   wsLink,
 } from "@trpc/client";
-
 
 const { port, prefix } = serverConfig;
 const urlEnd = `localhost:${port}${prefix}`;
@@ -50,13 +48,11 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
   );
 }
 
-
-
-
-render(() =>
-  <QueryClientProvider client={queried}>
-  <Router >
-    {routes}
-  </Router>
-</QueryClientProvider>
-  , document.getElementById("root"));
+render(
+  () => (
+    <QueryClientProvider client={queried}>
+      <Router>{routes}</Router>
+    </QueryClientProvider>
+  ),
+  document.getElementById("root"),
+);

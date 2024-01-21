@@ -9,13 +9,15 @@ export default function Page(props: { movies: Movie[] }) {
         <For each={props.movies}>
           {(movie) => (
             <li>
-              <a href={`/star-wars/${movie.id}`}>{movie.title}</a> ({movie.release_date})
+              <a href={`/star-wars/${movie.id}`}>{movie.title}</a> (
+              {movie.release_date})
             </li>
           )}
         </For>
       </ol>
       <p>
-        Source: <a href="https://star-wars.brillout.com">star-wars.brillout.com</a>.
+        Source:{" "}
+        <a href="https://star-wars.brillout.com">star-wars.brillout.com</a>.
       </p>
     </>
   );

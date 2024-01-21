@@ -9,20 +9,11 @@ const showNav = (value) => {
   return RouteNoNav.includes(value.pathname) ? false : true;
 };
 export const routes = [
-
-
   {
     path: "/",
     component: lazy(() => import("./pages/Login")),
-  }
-]
-
-
-
-
-
-
-
+  },
+];
 
 const App: Component = () => {
   return (

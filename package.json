@@ -7,8 +7,9 @@
     "dev": "tsx  entry.ts",
     "build": "vite build",
     "test": "pnpx vitest",
+    "format": "prettier --write .",
     "preview": "NODE_ENV=production tsx ./h3-entry.ts",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+    "lint": "eslint --fix --ext  .js,.jsx,.ts,.tsx ."
   },
   "keywords": [],
   "author": "",
@@ -46,6 +47,7 @@
     "vite-plugin-vercel": "^2.0.0",
     "vitest": "^1.2.0",
     "zod": "^3.22.4",
+    "zod-form-data": "^2.0.2",
     "zod_utilz": "^0.7.3"
   }
 }

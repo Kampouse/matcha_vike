@@ -3,7 +3,7 @@ import { useClientDB } from "./database";
 import { z } from "zod";
 const UsePasswordFromHash = async (input: string) => {
   // argoion2id standart ... pbkdf2
-  const key = await argon2.hash(input, { type: 2 })
+  const key = await argon2.hash(input, { type: 2 });
   return key;
 };
 
@@ -11,7 +11,7 @@ export const ValidateUser = async (mail: string, input: string) => {
   const Clientdb = useClientDB();
   const content = await Clientdb.query(
     "SELECT password_hash,username FROM users WHERE email = ?",
-    [mail]
+    [mail],
   );
   if (content.success === false) {
     return content;
@@ -23,14 +23,10 @@ export const ValidateUser = async (mail: string, input: string) => {
     const validated = await argon2.verify(onput.password_hash, input);
     if (validated) {
       return { email: mail, username: onput.username };
-    }
-    else {
-
+    } else {
       return content;
     }
   }
-
-
 };
 
 export const deleteAccount = async (inputEmail: string) => {
@@ -43,7 +39,6 @@ export const deleteAccount = async (inputEmail: string) => {
 };
 
 export const isExistingUser = async (inputEmail: string, username: string) => {
-
   console.log("datUser", inputEmail);
 
   const Clientdb = useClientDB();
@@ -55,19 +50,11 @@ export const isExistingUser = async (inputEmail: string, username: string) => {
   if (datUser.success === false) {
     console.log("datUser", datUser);
     return false;
-
-
-
   }
-
-
 
   if (datUser.data.rows.length === 0) {
     return false;
   }
-
-
-
 
   return true;
 };
@@ -76,12 +63,9 @@ export const createUser = async (input: {
   username: string;
   password: string;
 }) => {
-
   if (input.password == undefined) {
     console.log("input", input);
     return false;
-
-
   }
 
   const hashed = await UsePasswordFromHash(input.password);
@@ -94,9 +78,12 @@ export const createUser = async (input: {
     );
     if (content.success === true) {
       return true;
-    }
-    else {
-      return { success: false, data: content.data.rowsAffected, reason: "could not write to the database existing user" };
+    } else {
+      return {
+        success: false,
+        data: content.data.rowsAffected,
+        reason: "could not write to the database existing user",
+      };
     }
   } catch (e) {
     console.log(e);
