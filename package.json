@@ -1,0 +1,51 @@
+{
+  "name": "my-app",
+  "version": "0.0.1",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx  entry.ts",
+    "build": "vite build",
+    "test": "pnpx vitest",
+    "preview": "NODE_ENV=production tsx ./h3-entry.ts",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+  },
+  "keywords": [],
+  "author": "",
+  "devDependencies": {
+    "@types/serve-static": "^1.15.5",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-solid": "^0.13.1",
+    "postcss": "^8.4.33",
+    "prettier": "^3.2.2",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "@hattip/polyfills": "^0.0.38",
+    "@planetscale/database": "^1.14.0",
+    "@trpc/client": "^10.45.0",
+    "@trpc/server": "^10.45.0",
+    "@vite-plugin-vercel/vike": "^2.0.0",
+    "argon2": "^0.31.2",
+    "cross-fetch": "^4.0.0",
+    "dotenv": "^16.3.2",
+    "h3": "~1.9.0",
+    "listhen": "^1.5.6",
+    "serve-static": "^1.15.0",
+    "solid-js": "^1.8.11",
+    "tsx": "^4.7.0",
+    "vike": "^0.4.156",
+    "vike-solid": "^0.2.8",
+    "vite": "^5.0.11",
+    "vite-plugin-vercel": "^2.0.0",
+    "vitest": "^1.2.0",
+    "zod": "^3.22.4",
+    "zod_utilz": "^0.7.3"
+  }
+}

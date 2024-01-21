@@ -1,0 +1,38 @@
+{
+  "name": "web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint --fix \"src/**/*.ts\""
+  },
+  "dependencies": {
+    "@repo/ui": "workspace:*",
+    "@repo/trpc": "workspace:*",
+    "@solidjs/router": "^0.10.9",
+    "@tanstack/solid-query": "^5.8.4",
+    "@trpc/client": "^10.43.6",
+    "httpBatchLink": "link:@trpc/client/links/httpBatchLink",
+    "solid-js": "^1.8.11",
+    "superjson": "^2.2.1",
+    "zod": "^3.22.4",
+    "zod-form-data": "^2.0.2"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "eslint": "^8.54.0",
+    "eslint-plugin-solid": "^0.13.0",
+    "postcss": "^8.4.24",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.2",
+    "vite-plugin-solid": "^2.7.0"
+  }
+}
